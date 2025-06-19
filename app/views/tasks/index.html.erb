@@ -7,9 +7,10 @@
       <%= form.submit "Add", class: "btn" %>
     </div>
   <% end %>
-
+<% @grouped_tasks.each do |label, tasks| %>
+  <h2 style="margin-top: 20px; margin-bottom: 10px; color: #555;"><%= label %></h2>
   <ul class="task-list">
-    <% @tasks.each do |task| %>
+    <% tasks.each do |task| %>
       <li class="task-item <%= 'completed' if task.completed %>">
         <span><%= task.title %></span>
         <div class="actions">
@@ -19,5 +20,7 @@
         </div>
       </li>
     <% end %>
+  </ul>
+<% end %>
   </ul>
 </div>
