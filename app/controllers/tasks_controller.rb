@@ -4,7 +4,21 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.order(created_at: :desc)
     @task = Task.new
+     @grouped_tasks = Task.order(created_at: :desc).group_by do |task|
+    date = task.created_at.to_date
+    if date == Date.today
+      "Today, #{date.strftime('%B %d, %Y')}"
+    elsif date == Date.yesterday
+      "Yesterday, #{date.strftime('%B %d, %Y')}"
+    elsif date.cweek == Date.today.cweek && date.year == Date.today.year
+      "This Week, #{date.strftime('%B %d, %Y')}"
+    elsif date.year == Date.today.year
+      date.strftime("%B %Y") # e.g., June 2025
+    else
+      date.strftime("%B %d, %Y") # e.g., May 14, 2024
+    end
   end
+end
 
   def create
     @task = Task.new(task_params)
