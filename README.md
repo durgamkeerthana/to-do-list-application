@@ -20,6 +20,8 @@ Follow these steps to set up the application on your local machine.
 
 ```bash
 git clone https://github.com/your-username/todo_app.git
+git checkout group-by-date
+
 cd todo_app
 ```
 
