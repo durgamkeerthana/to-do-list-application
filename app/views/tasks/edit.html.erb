@@ -1,0 +1,12 @@
+<div class="container">
+  <h2 class="title">Edit Task</h2>
+
+  <%= form_with(model: @task, local: true) do |form| %>
+    <div class="form-group">
+      <%= form.text_field :title, class: "input" %>
+      <%= form.submit "Update", class: "btn" %>
+    </div>
+  <% end %>
+
+  <%= link_to "Back", root_path, class: "btn small" %>
+</div>

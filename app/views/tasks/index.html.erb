@@ -1,0 +1,23 @@
+<div class="container">
+  <h1 class="title">Todo List</h1>
+
+  <%= form_with(model: @task, local: true) do |form| %>
+    <div class="form-group">
+      <%= form.text_field :title, placeholder: "New task...", class: "input" %>
+      <%= form.submit "Add", class: "btn" %>
+    </div>
+  <% end %>
+
+  <ul class="task-list">
+    <% @tasks.each do |task| %>
+      <li class="task-item <%= 'completed' if task.completed %>">
+        <span><%= task.title %></span>
+        <div class="actions">
+          <%= button_to 'Toggle', toggle_task_path(task), method: :patch, class: "btn small" %>
+          <%= link_to 'Edit', edit_task_path(task), class: "btn small" %>
+          <%= button_to 'Delete', task_path(task), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn small danger" %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
