@@ -19,8 +19,8 @@ Follow these steps to set up the application on your local machine.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/todo_app.git
-cd todo_app
+git clone git@github.com:durgamkeerthana/to-do-list-application.git
+cd ai_todo_app
 ```
 
 ### 2.Install Ruby Gems
