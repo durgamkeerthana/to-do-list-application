@@ -6,10 +6,10 @@ This is a simple To-Do List application built with Ruby on Rails. It allows user
 
 ## Technologies Used
 
-- **Ruby**: 2.6 or higher
-- **Rails**: 6.1 or higher
-- **Database**: PostgreSQL (or SQLite for development)
-- **CSS Styling**: Tailwind CSS or basic custom CSS
+- **Ruby**: 3.2.2
+- **Rails**: 8.0.2
+- **Database**: PostgreSQL
+- **CSS Styling**: basic custom CSS
 - **ORM**: ActiveRecord
 
 ---
