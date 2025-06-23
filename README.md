@@ -1,6 +1,6 @@
 # 📝 To-Do Application (Ruby on Rails)
 
-This is a simple To-Do List application built with Ruby on Rails. It allows users to manage tasks by adding, editing, completing, and deleting them.
+This is a simple To-Do List application built with Ruby on Rails. It allows users to manage tasks by adding, editing, completing, and deleting them. Added the feature to group the tasks by the date it is rendered.
 
 ---
 
@@ -19,8 +19,10 @@ Follow these steps to set up the application on your local machine.
 ### 1. Clone the Repository
 
 ```bash
-git clone git@github.com:durgamkeerthana/to-do-list-application.git
-cd ai_todo_app
+git clone https://github.com/your-username/todo_app.git
+git checkout group-by-date
+
+cd todo_app
 ```
 
 ### 2.Install Ruby Gems
@@ -46,3 +48,5 @@ Visit: http://localhost:3000
 - User will be able to mark as save, edit and delete the entered tasks.
 - The entries will be stored in Postgresql.
 
+### Output images
+ ![alt text](app/assets/images/Todo-list-app.png)

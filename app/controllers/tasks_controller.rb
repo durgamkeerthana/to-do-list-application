@@ -1,13 +1,16 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_task, only: [:edit, :update, :destroy, :toggle]
 
   def index
-    @tasks = Task.order(created_at: :desc)
     @task = Task.new
+    @grouped_tasks = current_user.tasks.order(created_at: :desc).group_by do |task|
+      task.created_at.strftime("%B %Y")  
+    end
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     if @task.save
       redirect_to root_path, notice: 'Task added successfully.'
     else
@@ -16,8 +19,7 @@ class TasksController < ApplicationController
   end
 
   def edit
-  @task = Task.find(params[:id])
-end
+  end
 
   def update
     if @task.update(task_params)
@@ -40,7 +42,7 @@ end
   private
 
   def set_task
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
   end
 
   def task_params

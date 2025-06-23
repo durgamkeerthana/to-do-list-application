@@ -1,6 +1,5 @@
-/* app/assets/stylesheets/application.css */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   background-color: #f4f4f4;
   display: flex;
   justify-content: center;
@@ -11,11 +10,12 @@ body {
 
 .container {
   background: white;
-  padding: 30px;
+  padding: 100px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 500px;
+  max-width: 800px;
+  height:100%;
 }
 
 h1.title {
@@ -33,7 +33,7 @@ h1.title {
 
 .input {
   padding: 10px;
-  width: 70%;
+  width: 100%;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 16px;
@@ -42,7 +42,7 @@ h1.title {
 .btn {
   padding: 10px 16px;
   margin-left: 10px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 6px;
@@ -79,4 +79,74 @@ h1.title {
 
 .btn.danger {
   background-color: #e74c3c;
+}
+
+.app-header {
+  background-color: black;
+  color: green;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logout-btn {
+  margin-left: 10px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.auth-container {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  margin: 100px auto;
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.auth-container .field {
+  margin-bottom: 20px;
+}
+
+.auth-container input[type="email"],
+.auth-container input[type="password"],
+.auth-container input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.auth-container .actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.auth-container .actions input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.auth-container .links {
+  text-align: center;
+  margin-top: 15px;
 }
