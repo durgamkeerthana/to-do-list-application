@@ -15,3 +15,9 @@ Rails.application.routes.draw do
     end
   end
 end
+def toggle
+  @task = current_user.tasks.find(params[:id])
+  @task.completed = !@task.completed
+  @task.save
+  redirect_to tasks_path, notice: "Task status updated."
+end
