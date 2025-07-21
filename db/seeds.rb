@@ -7,3 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+puts "Seeding tasks..."
+
+Task.create(title: "Learn Ruby on Rails", completed: false)
+Task.create(title: "Build Todo App", completed: true)
+Task.create(title: "Practice Coding", completed: false)
+
+puts "Seeding completed!"

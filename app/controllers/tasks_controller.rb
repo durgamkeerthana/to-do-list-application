@@ -1,51 +1,47 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_task, only: [:edit, :update, :destroy, :toggle]
 
   def index
+    load_tasks
     @task = Task.new
-    @grouped_tasks = current_user.tasks.order(created_at: :desc).group_by do |task|
-      task.created_at.strftime("%B %Y")  
-    end
   end
 
   def create
     @task = current_user.tasks.build(task_params)
+
     if @task.save
-      redirect_to root_path, notice: 'Task added successfully.'
+      redirect_to tasks_path, notice: "Task created successfully."
     else
+      load_tasks
       render :index
     end
   end
 
-  def edit
-  end
-
-  def update
-    if @task.update(task_params)
-      redirect_to root_path, notice: 'Task updated.'
-    else
-      render :edit
-    end
-  end
-
   def destroy
+    @task = current_user.tasks.find(params[:id])
     @task.destroy
-    redirect_to root_path, notice: 'Task deleted.'
+    redirect_to tasks_path, notice: "Task deleted successfully."
   end
 
   def toggle
-    @task.update(completed: !@task.completed)
-    redirect_to root_path
+    @task = current_user.tasks.find(params[:id])
+    
+    @task.completed = !@task.completed
+    @task.completed_at = @task.completed? ? Time.current : nil
+    @task.tagline = nil unless @task.completed?  
+
+    @task.save
+    redirect_to tasks_path, notice: "Task status updated."
   end
 
   private
 
-  def set_task
-    @task = current_user.tasks.find(params[:id])
+  def task_params
+    params.require(:task).permit(:title, :due_time)
   end
 
-  def task_params
-    params.require(:task).permit(:title, :completed)
+  def load_tasks
+    @tasks = Task.where(user: current_user)
+    @grouped_tasks = @tasks.group_by { |task| task.due_time.strftime("%B %Y") if task.due_time.present? }
   end
 end

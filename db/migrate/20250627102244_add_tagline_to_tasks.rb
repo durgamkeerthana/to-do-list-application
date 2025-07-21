@@ -1,0 +1,5 @@
+class AddTaglineToTasks < ActiveRecord::Migration[8.0]
+  def change
+    add_column :tasks, :tagline, :string
+  end
+end
